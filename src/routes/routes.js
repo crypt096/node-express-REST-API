@@ -1,5 +1,6 @@
 import {
-  addNewContact
+  addNewContact,
+  getContacts
 } from '../controllers/controller'
 
 const routes = (app) => {
@@ -9,9 +10,7 @@ const routes = (app) => {
       console.log(`Request from: ${req.originalUrl}`)
       console.log(`Request type: ${req.method}`)
       next();
-    }, (req, res, next) => {
-      res.send('GET request successful')
-    })
+    }, getContacts)
 
     .post(addNewContact)
 
