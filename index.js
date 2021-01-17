@@ -21,6 +21,9 @@ app.use(bodyParser.json())
 
 routes(app);
 
+// Serving static files
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.send(`Node and Express server running on port ${PORT}`)
 });
