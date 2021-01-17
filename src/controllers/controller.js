@@ -33,3 +33,18 @@ export const getContactWithID = (req, res) => {
     res.json(contact)
   })
 }
+
+export const updateContact = (req, res) => {
+  Contact.findOne({
+      _id: req.params.contactID
+    },
+    req.body, {
+      new: true,
+      useFindAndModify: false,
+    }, (err, contact) => {
+      if (err) {
+        res.send(err)
+      }
+      res.json(contact)
+    })
+}
