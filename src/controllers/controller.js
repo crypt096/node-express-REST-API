@@ -35,7 +35,7 @@ export const getContactWithID = (req, res) => {
 }
 
 export const updateContact = (req, res) => {
-  Contact.findOne({
+  Contact.findOneAndUpdate({
       _id: req.params.contactID
     },
     req.body, {
@@ -47,4 +47,17 @@ export const updateContact = (req, res) => {
       }
       res.json(contact)
     })
+}
+
+export const deleteContact = (req, res) => {
+  Contact.remove({
+    _id: req.params.contactID
+  }, (err, contact) => {
+    if (err) {
+      res.send(err)
+    }
+    res.json({
+      message: 'Successfully deleted contact!'
+    })
+  })
 }
